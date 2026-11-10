@@ -1,6 +1,7 @@
 name: Github Action
 
 on:
+  workflow_dispatch:
   pull_request: # trigger on pull requests
   push:
     branches:
