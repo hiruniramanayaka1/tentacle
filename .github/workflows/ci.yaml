@@ -26,6 +26,12 @@ jobs:
             rust: 1.46.0
     steps:
       - uses: actions/checkout@v2
+      - name: Cache cargo registry
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+          key: "${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.toml', 'Cargo.lock') }}"
       - name: Build
         run: |
           make build
@@ -40,6 +46,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Cache cargo registry
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+          key: "${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.toml', 'Cargo.lock') }}"
       - name: Format check
         run: |
           rustup component add rustfmt
@@ -50,6 +62,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Cache cargo registry
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+          key: "${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.toml', 'Cargo.lock') }}"
       - name: Clippy check
         run: |
           rustup component add clippy
@@ -60,6 +78,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Cache cargo registry
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+          key: "${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.toml', 'Cargo.lock') }}"
       - name: Features check
         run: |
           echo "stable" > rust-toolchain
@@ -72,6 +96,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Cache cargo registry
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+          key: "${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.toml', 'Cargo.lock') }}"
       - name: Fuzz test
         run: |
           rustup install nightly
